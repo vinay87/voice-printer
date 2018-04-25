@@ -13,10 +13,9 @@ import random
 import glob
 
 def say(text, lang="en"):
-    speech = Speech(text, lang)
-    sox_effects = ("speed", "1.02", "vol", "0.3")
+    speech = Speech(text)
+    sox_effects = ("speed", "1", "vol", "0.7")
     speech.play(sox_effects)
-
 
 
 def print_story():
@@ -29,15 +28,29 @@ def print_story():
 
 
 def print_poem():
-    pass
+    conn = cups.Connection()
+    story_path = os.path.join(
+            os.path.dirname(os.path.realpath(__file__)),
+            "data","poems","*.docx")
+    random_story = random.choice(glob.glob(story_path))
+    conn.printFile("ZJ-58", random_story)
 
 
 def print_quote():
-    pass
-
+    conn = cups.Connection()
+    story_path = os.path.join(
+            os.path.dirname(os.path.realpath(__file__)),
+            "data","quotes","*.docx")
+    random_story = random.choice(glob.glob(story_path))
+    conn.printFile("ZJ-58", random_story)
 
 def print_gkn():
-    pass
+    conn = cups.Connection()
+    story_path = os.path.join(
+            os.path.dirname(os.path.realpath(__file__)),
+            "data","gkn","*.docx")
+    random_story = random.choice(glob.glob(story_path))
+    conn.printFile("ZJ-58", random_story)
 
 
 def print_report():
